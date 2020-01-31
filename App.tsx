@@ -6,11 +6,14 @@ import { styles } from "./src/res/styles";
 
 interface State {
   faceDetecting: boolean;
-  faces: [];
+  faces: any;
   x: number;
   y: number;
   height: number;
   width: number;
+  smilingProbability: number;
+  leftEyeOpenProbability: number;
+  rightEyeOpenProbability: number;
 }
 
 export default class App extends React.Component<{}, State> {
@@ -24,6 +27,9 @@ export default class App extends React.Component<{}, State> {
       y: 0,
       height: 0,
       width: 0,
+      smilingProbability: 0,
+      leftEyeOpenProbability: 0,
+      rightEyeOpenProbability: 0,
     };
   }
 
@@ -36,7 +42,7 @@ export default class App extends React.Component<{}, State> {
     console.log(status);
   }
 
-  handleFacesDetected = ({ faces }) => {
+  handleFacesDetected = ({faces}:any) => {
     if (faces.length > 0) {
       this.setState({ faces });
     }
@@ -46,27 +52,29 @@ export default class App extends React.Component<{}, State> {
         y: 0,
         width: 0,
         height: 0,
-      })
+      });
     } else {
-      console.log(faces[0].bounds);
-      this.setState({ y: faces[0].bounds.origin.y });
-      this.setState({ x: faces[0].bounds.origin.x });
-      this.setState({ width: faces[0].bounds.size.width });
-      this.setState({ height: faces[0].bounds.size.height });
+      console.log(faces[0]);
+      this.setState({
+        y: faces[0].bounds.origin.y,
+        x: faces[0].bounds.origin.x,
+        width: faces[0].bounds.size.width,
+        height: faces[0].bounds.size.height,
+      });
     }
   };
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Camera 
+        <Camera
           style={{ flex: 1 }}
           type={Camera.Constants.Type.front}
           onFacesDetected={this.handleFacesDetected}
           faceDetectorSettings={{
             mode: FaceDetector.Constants.Mode.fast,
             detectLandmarks: FaceDetector.Constants.Landmarks.none,
-            runClassifications: FaceDetector.Constants.Classifications.none,
+            runClassifications: FaceDetector.Constants.Classifications.all,
             minDetectionInterval: 100,
             tracking: true,
           }}
@@ -82,6 +90,9 @@ export default class App extends React.Component<{}, State> {
             },
           ]}
         ></View>
+        <View>
+          
+        </View>
       </View>
     );
   }
