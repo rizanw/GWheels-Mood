@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Camera } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 import { styles } from "./src/res/styles";
+import MeterBar from "./src/components/MeterBar";
 
 interface State {
   faceDetecting: boolean;
@@ -60,11 +61,24 @@ export default class App extends React.Component<{}, State> {
         x: faces[0].bounds.origin.x,
         width: faces[0].bounds.size.width,
         height: faces[0].bounds.size.height,
+        smilingProbability: faces[0].smilingProbability,
+        leftEyeOpenProbability: faces[0].leftEyeOpenProbability,
+        rightEyeOpenProbability: faces[0].rightEyeOpenProbability
       });
     }
   };
 
+  predictSmile = () => {
+    const { rightEyeOpenProbability, leftEyeOpenProbability, smilingProbability } = this.state;
+    const smile = smilingProbability + (rightEyeOpenProbability + leftEyeOpenProbability) / 5;
+    console.log("smile: " + smile)
+    return smile;
+  }
+
   render() {
+    const { rightEyeOpenProbability, leftEyeOpenProbability, smilingProbability } = this.state;
+    const meters = this.predictSmile();
+
     return (
       <View style={{ flex: 1 }}>
         <Camera
@@ -90,9 +104,7 @@ export default class App extends React.Component<{}, State> {
             },
           ]}
         ></View>
-        <View>
-          
-        </View>
+        <MeterBar meters={meters}/>
       </View>
     );
   }
