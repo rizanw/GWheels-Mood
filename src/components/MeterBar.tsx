@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { View, Animated, Text } from "react-native";
+import { View, Animated, Text, Image, Dimensions } from "react-native";
 import { styles } from "../res/styles";
 
 interface Props {
@@ -16,6 +16,7 @@ class MeterBar extends React.Component<Props, State> {
   toWidthPercentage(meters: number) {
     let res = 0;
     res = (meters / 1) * 100;
+    if(res>100) res = 100;
     return res + "%";
   }
 
@@ -34,7 +35,10 @@ class MeterBar extends React.Component<Props, State> {
             ]}
           />
         </View>
-        <View>
+        <View style={styles.meterBarIconContainer}>
+          <Image style={[styles.meterBarIcon, {left: 0}]} source={require('../../assets/icons/tired.png')} />
+          <Image style={[styles.meterBarIcon, {marginHorizontal: Dimensions.get("window").width/3+10}]} source={require('../../assets/icons/tired.png')} />
+          <Image style={[styles.meterBarIcon, {left: 0}]} source={require('../../assets/icons/tired.png')} />
         </View>
       </View>
     );

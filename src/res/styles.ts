@@ -16,25 +16,36 @@ export const styles = StyleSheet.create({
   }, 
   meterBarText: {
     position: "absolute",
-    bottom: 40,
+    bottom: 62,
     left: 14,
     fontSize: 16,
     fontWeight: "bold",
     color: "white", 
   },
   meterBar: {
-    height: 26,
-    width: "92%",
-    // marginHorizontal: 12,
-    backgroundColor: 'white',  
     position: "absolute",
-    bottom: 12, 
+    bottom: 36, 
+    height: 26,
+    width: "92%", 
+    backgroundColor: 'white',  
+    borderRadius: 12,
   }, 
   absoluteFill: {
+    borderRadius: 12,
     position: 'absolute',
     left: 0,
     right: 0,
     top: 0,
     bottom: 0
+  },
+  meterBarIconContainer: {
+    position: "absolute",
+    bottom: 10,  
+    flexDirection: "row"
+  },
+  meterBarIcon: { 
+    width: 24,
+    height: 24,
+    backgroundColor: "transparent"
   }
 });
