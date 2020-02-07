@@ -53,5 +53,12 @@ export const styles = StyleSheet.create({
     width: 24,
     height: 24,
     backgroundColor: "transparent"
+  },
+  button: {
+    backgroundColor: "#009F35",
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    marginVertical: 20,
+    borderRadius: 10
   }
 });
