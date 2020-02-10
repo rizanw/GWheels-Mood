@@ -60,5 +60,20 @@ export const styles = StyleSheet.create({
     paddingVertical: 8,
     marginVertical: 20,
     borderRadius: 10
+  },
+  bannerContainer: {
+    backgroundColor: "#009F35",
+    position: "absolute",
+    right: 14,
+    top: 34,
+    width: 84,
+    paddingHorizontal: 14,
+    paddingVertical: 4,
+    borderRadius: 4
+  },
+  bannerText: {
+    color: "white",  
+    fontSize: 16,
+    fontWeight: "bold",
   }
 });

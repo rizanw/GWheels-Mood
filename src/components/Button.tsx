@@ -4,7 +4,7 @@ import { styles } from "../res/styles";
 
 interface Props {
   children: string;
-  onPress?: Function;
+  onPress?: any;
   activeOpacity?: number;
 }
 
@@ -25,7 +25,7 @@ class Button extends React.Component<Props, State> {
       <TouchableOpacity
         activeOpacity={activeOpacity}
         style={styles.button}
-        onPress={() => onPress}
+        onPress={onPress}
       >
         <Text style={{ color: "white" }}>{children}</Text>
       </TouchableOpacity>

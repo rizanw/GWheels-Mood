@@ -4,6 +4,7 @@ import { Camera } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 import { styles } from "../res/styles";
 import MeterBar from "../components/MeterBar";
+import Banner from "../components/Banner";
 
 interface State {
   faceDetecting: boolean;
@@ -104,6 +105,7 @@ export default class Main extends React.Component<{}, State> {
             },
           ]}
         ></View>
+        <Banner>XP</Banner>
         <MeterBar meters={meters}/>
       </View>
     );
