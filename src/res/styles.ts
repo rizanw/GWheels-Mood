@@ -63,15 +63,17 @@ export const styles = StyleSheet.create({
   },
   bannerContainer: {
     backgroundColor: "#009F35",
+    flexDirection: "row",
     position: "absolute",
     right: 14,
     top: 34,
-    width: 84,
-    paddingHorizontal: 14,
+    minWidth: 84,
+    paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 4
   },
   bannerText: {
+    flex:1,
     color: "white",  
     fontSize: 16,
     fontWeight: "bold",

@@ -4,6 +4,7 @@ import { styles } from "../res/styles";
 
 interface Props {
   children: string;
+  xp?: number
 }
 
 interface State {}
@@ -22,6 +23,7 @@ class Banner extends React.Component<Props, State> {
     return (
       <View style={styles.bannerContainer}>
         <Text style={styles.bannerText}>{children}</Text>
+        <Text style={[styles.bannerText, {textAlign: "right"}]}>{this.props.xp}</Text>
       </View>
     );
   }

@@ -31,7 +31,7 @@ class MeterBar extends React.Component<Props, State> {
           <Animated.View
             style={[
               styles.absoluteFill,
-              { backgroundColor: "#8BED4F", width: width },
+              { backgroundColor: "#009F35", width: width },
             ]}
           />
         </View>

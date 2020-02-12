@@ -16,6 +16,8 @@ interface State {
   smilingProbability: number;
   leftEyeOpenProbability: number;
   rightEyeOpenProbability: number;
+  xp: number;
+  smile: number;
 }
 
 export default class Main extends React.Component<{}, State> {
@@ -25,6 +27,7 @@ export default class Main extends React.Component<{}, State> {
     this.state = {
       faceDetecting: false,
       faces: [],
+      xp: 0,
       x: 0,
       y: 0,
       height: 0,
@@ -32,11 +35,20 @@ export default class Main extends React.Component<{}, State> {
       smilingProbability: 0,
       leftEyeOpenProbability: 0,
       rightEyeOpenProbability: 0,
+      smile: 0,
     };
   }
 
   componentDidMount() {
     this.statusCheck();
+
+    setInterval(() => {
+      this.xpCounter();
+    }, 100);
+  }
+
+  componentWillUnmount() {
+    clearInterval();
   }
 
   async statusCheck() {
@@ -44,7 +56,14 @@ export default class Main extends React.Component<{}, State> {
     console.log(status);
   }
 
-  handleFacesDetected = ({faces}:any) => {
+  xpCounter = () => {
+    const smile = this.predictSmile();
+    if (smile > 0.5) {
+      this.setState({ xp: this.state.xp + 1 });
+    }
+  };
+
+  handleFacesDetected = ({ faces }: any) => {
     if (faces.length > 0) {
       this.setState({ faces });
     }
@@ -56,7 +75,6 @@ export default class Main extends React.Component<{}, State> {
         height: 0,
       });
     } else {
-      console.log(faces[0]);
       this.setState({
         y: faces[0].bounds.origin.y,
         x: faces[0].bounds.origin.x,
@@ -64,20 +82,29 @@ export default class Main extends React.Component<{}, State> {
         height: faces[0].bounds.size.height,
         smilingProbability: faces[0].smilingProbability,
         leftEyeOpenProbability: faces[0].leftEyeOpenProbability,
-        rightEyeOpenProbability: faces[0].rightEyeOpenProbability
+        rightEyeOpenProbability: faces[0].rightEyeOpenProbability,
       });
     }
   };
 
   predictSmile = () => {
-    const { rightEyeOpenProbability, leftEyeOpenProbability, smilingProbability } = this.state;
-    const smile = smilingProbability + (rightEyeOpenProbability + leftEyeOpenProbability) / 5;
-    console.log("smile: " + smile)
+    const {
+      rightEyeOpenProbability,
+      leftEyeOpenProbability,
+      smilingProbability,
+    } = this.state;
+    const smile =
+      smilingProbability +
+      (rightEyeOpenProbability + leftEyeOpenProbability) / 5;
     return smile;
-  }
+  };
 
   render() {
-    const { rightEyeOpenProbability, leftEyeOpenProbability, smilingProbability } = this.state;
+    const {
+      rightEyeOpenProbability,
+      leftEyeOpenProbability,
+      smilingProbability,
+    } = this.state;
     const meters = this.predictSmile();
 
     return (
@@ -105,8 +132,8 @@ export default class Main extends React.Component<{}, State> {
             },
           ]}
         ></View>
-        <Banner>XP</Banner>
-        <MeterBar meters={meters}/>
+        <Banner xp={this.state.xp}>{"XP "}</Banner>
+        <MeterBar meters={meters} />
       </View>
     );
   }
