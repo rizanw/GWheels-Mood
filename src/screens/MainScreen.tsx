@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import { Camera } from "expo-camera";
 import * as FaceDetector from "expo-face-detector";
 import { styles } from "../res/styles";
@@ -7,7 +7,7 @@ import MeterBar from "../components/MeterBar";
 import Banner from "../components/Banner";
 
 interface State {
-  faceDetecting: boolean;
+  faceDetected: boolean;
   faces: any;
   x: number;
   y: number;
@@ -25,7 +25,7 @@ export default class Main extends React.Component<{}, State> {
     super(props);
 
     this.state = {
-      faceDetecting: false,
+      faceDetected: false,
       faces: [],
       xp: 0,
       x: 0,
@@ -58,7 +58,7 @@ export default class Main extends React.Component<{}, State> {
 
   xpCounter = () => {
     const smile = this.predictSmile();
-    if (smile > 0.5) {
+    if (smile > 0.5 && this.state.faceDetected) {
       this.setState({ xp: this.state.xp + 1 });
     }
   };
@@ -73,6 +73,7 @@ export default class Main extends React.Component<{}, State> {
         y: 0,
         width: 0,
         height: 0,
+        faceDetected: false,
       });
     } else {
       this.setState({
@@ -83,6 +84,7 @@ export default class Main extends React.Component<{}, State> {
         smilingProbability: faces[0].smilingProbability,
         leftEyeOpenProbability: faces[0].leftEyeOpenProbability,
         rightEyeOpenProbability: faces[0].rightEyeOpenProbability,
+        faceDetected: true,
       });
     }
   };
@@ -121,17 +123,33 @@ export default class Main extends React.Component<{}, State> {
             tracking: true,
           }}
         />
-        <View
-          style={[
-            styles.faceSquare,
-            {
-              top: this.state.y,
-              left: this.state.x,
-              width: this.state.width,
-              height: this.state.height,
-            },
-          ]}
-        ></View>
+        {meters > 0.5 ? (
+          <Image
+            source={require("../../assets/animation/sparkle.gif")}
+            style={[
+              styles.faceSquare,
+              {
+                top: this.state.y,
+                left: this.state.x,
+                width: this.state.width,
+                height: this.state.height,
+              },
+            ]}
+          />
+        ) : (
+          <Image
+            source={require("../../assets/animation/sweat.gif")}
+            style={[
+              styles.faceSquare,
+              {
+                top: this.state.y,
+                left: this.state.x,
+                width: this.state.width,
+                height: this.state.height,
+              },
+            ]}
+          />
+        )}
         <Banner xp={this.state.xp}>{"XP "}</Banner>
         <MeterBar meters={meters} />
       </View>
