@@ -34,10 +34,10 @@ export const styles = StyleSheet.create({
     height: 26,
     width: "92%", 
     backgroundColor: 'white',  
-    borderRadius: 12,
+    borderRadius: 20,
   }, 
   absoluteFill: {
-    borderRadius: 12,
+    borderRadius: 20,
     position: 'absolute',
     left: 0,
     right: 0,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 8,
     marginVertical: 20,
-    borderRadius: 10
+    borderRadius:6
   },
   bannerContainer: {
     backgroundColor: "#009F35",

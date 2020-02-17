@@ -2,6 +2,8 @@
   "expo": {
     "name": "GWheels-Mood",
     "slug": "GWheels-Mood",
+    "description": "GWheels-Mood beta test by terrennial team",
+    "owner": "rizanw",
     "platforms": [
       "ios",
       "android",

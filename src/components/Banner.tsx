@@ -23,7 +23,7 @@ class Banner extends React.Component<Props, State> {
     return (
       <View style={styles.bannerContainer}>
         <Text style={styles.bannerText}>{children}</Text>
-        <Text style={[styles.bannerText, {textAlign: "right"}]}>{this.props.xp}</Text>
+        <Text style={[styles.bannerText, {textAlign: "right", fontWeight: "normal"}]}>{this.props.xp}</Text>
       </View>
     );
   }

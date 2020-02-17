@@ -44,7 +44,7 @@ export default class Main extends React.Component<{}, State> {
 
     setInterval(() => {
       this.xpCounter();
-    }, 100);
+    }, 200);
   }
 
   componentWillUnmount() {
