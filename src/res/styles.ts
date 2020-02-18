@@ -2,64 +2,76 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    fontFamily: "Sanomat-Regular",
+    fontSize: 12,
+  },
+  textTitle: {
+    color: "#009F35",
+    fontSize: 28,
+    fontWeight: "bold",
+    fontFamily: "Sanomat-Bold",
+    textAlign: "center",
+    marginHorizontal: 32,
   },
   faceSquare: {
-    borderColor: "green",
-    borderWidth: 2,
-    position: "absolute",
-    width: 10,
-    height: 10,             
+    // borderColor: "green",
+    // borderWidth: 2,
+    position: "absolute", 
   },
-  meterBarContainer: { 
+  meterBarContainer: {
     alignContent: "center",
     alignItems: "center",
     justifyContent: "center",
-    width: "100%"
-  }, 
+    width: "100%",
+  },
   meterBarText: {
     position: "absolute",
     bottom: 62,
-    left: 14,
+    left: 16,
     fontSize: 16,
     fontWeight: "bold",
-    color: "white", 
+    fontFamily: "Sanomat-Bold",
+    color: "white",
   },
   meterBar: {
     position: "absolute",
-    bottom: 36, 
+    bottom: 38,
     height: 26,
-    width: "92%", 
-    backgroundColor: 'white',  
+    width: "92%",
+    backgroundColor: "white",
     borderRadius: 20,
-  }, 
+  },
   absoluteFill: {
     borderRadius: 20,
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    bottom: 0
+    bottom: 0,
   },
   meterBarIconContainer: {
     position: "absolute",
-    bottom: 10,  
-    flexDirection: "row"
+    bottom: 10,
+    flexDirection: "row",
   },
-  meterBarIcon: { 
+  meterBarIcon: {
     width: 24,
     height: 24,
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
   },
   button: {
     backgroundColor: "#009F35",
-    paddingHorizontal: 14,
-    paddingVertical: 8,
+    paddingHorizontal: 18,
+    paddingTop: 10,
+    paddingBottom: 6,
     marginVertical: 20,
-    borderRadius:6
+    borderRadius: 6,
   },
   bannerContainer: {
     backgroundColor: "#009F35",
@@ -69,13 +81,20 @@ export const styles = StyleSheet.create({
     top: 34,
     minWidth: 84,
     paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 4
+    paddingVertical: 2,
+    paddingTop: 8,
+    borderRadius: 4,
   },
   bannerText: {
-    flex:1,
-    color: "white",  
+    flex: 1,
+    color: "white",
     fontSize: 16,
     fontWeight: "bold",
-  }
+    fontFamily: "Sanomat-Bold",
+  },
+  bannerTextXp: {
+    textAlign: "right",
+    fontWeight: "normal",
+    fontFamily: "Sanomat-Regular",
+  },
 });

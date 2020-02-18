@@ -27,7 +27,9 @@ class Button extends React.Component<Props, State> {
         style={styles.button}
         onPress={onPress}
       >
-        <Text style={{ color: "white" }}>{children}</Text>
+        <Text style={{ color: "white", fontFamily: "Sanomat-Regular" }}>
+          {children}
+        </Text>
       </TouchableOpacity>
     );
   }
