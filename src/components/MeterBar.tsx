@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Animated, Text, Image, Dimensions } from "react-native";
 import { styles } from "../res/styles";
+import { colors } from "../res/colors";
 
 interface Props {
   meters: number;
@@ -20,20 +21,27 @@ class MeterBar extends React.Component<Props, State> {
     return res + "%";
   }
 
+  meterFill(meters:number, width: string){
+    if(meters < 0.25){
+      return <Animated.View style={[ styles.absoluteFill, { backgroundColor: colors.RED, width: width }]}/>
+    }else if(0.25 < meters && meters < 0.5){
+      return <Animated.View style={[ styles.absoluteFill, { backgroundColor: colors.ORANGE, width: width }]}/>
+    }else if(0.5 < meters && meters < 0.75){
+      return <Animated.View style={[ styles.absoluteFill, { backgroundColor: colors.YELLOW, width: width }]}/>
+    }else{
+      return <Animated.View style={[ styles.absoluteFill, { backgroundColor: colors.GREEN, width: width }]}/>
+    }
+  }
+
   render() {
     const { meters } = this.props;
     const width = this.toWidthPercentage(meters);
-
+    console.log(meters + ": meter");
     return (
       <View style={styles.meterBarContainer}>
         <Text style={styles.meterBarText}>LIVELINESS METER</Text>
         <View style={styles.meterBar}>
-          <Animated.View
-            style={[
-              styles.absoluteFill,
-              { backgroundColor: "#009F35", width: width },
-            ]}
-          />
+          {this.meterFill(meters, width)}
         </View>
         <View style={styles.meterBarIconContainer}>
           <Image style={[styles.meterBarIcon, {left: 0}]} source={require('../../assets/icons/tired.png')} />

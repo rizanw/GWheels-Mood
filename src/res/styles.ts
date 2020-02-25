@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "./colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
   },
   textTitle: {
-    color: "#009F35",
+    color: colors.GREEN,
     fontSize: 28,
     fontWeight: "bold",
     fontFamily: "Sanomat-Bold",
@@ -44,7 +45,7 @@ export const styles = StyleSheet.create({
     bottom: 38,
     height: 26,
     width: "92%",
-    backgroundColor: "white",
+    backgroundColor: colors.WHITE,
     borderRadius: 20,
   },
   absoluteFill: {
@@ -66,7 +67,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   button: {
-    backgroundColor: "#009F35",
+    backgroundColor: colors.GREEN_DARK,
     paddingHorizontal: 18,
     paddingTop: 10,
     paddingBottom: 6,
@@ -74,7 +75,7 @@ export const styles = StyleSheet.create({
     borderRadius: 6,
   },
   bannerContainer: {
-    backgroundColor: "#009F35",
+    backgroundColor: colors.GREEN,
     flexDirection: "row",
     position: "absolute",
     right: 14,
@@ -87,7 +88,7 @@ export const styles = StyleSheet.create({
   },
   bannerText: {
     flex: 1,
-    color: "white",
+    color: colors.WHITE,
     fontSize: 16,
     fontWeight: "bold",
     fontFamily: "Sanomat-Bold",
