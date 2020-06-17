@@ -16,20 +16,26 @@ export default class Start extends React.Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            color: "#009F35",
-            fontSize: 28,
-            fontWeight: "bold",
-            textAlign: "center",
-            marginHorizontal: 32,
-          }}
-        >
-          Let's have some fun on the wheels!
-        </Text>
-        <Button onPress={() => this.props.navigation.navigate("Main")}>
-          Proceed!
-        </Button>
+      <View style={[styles.container, {flex:6}]}>
+          <Text
+            style={{
+              color: "#009F35",
+              fontSize: 28,
+              fontWeight: "bold",
+              textAlign: "center",
+              marginHorizontal: 32,
+            }}
+          >
+            Let's have some fun on the wheels!
+          </Text>
+          <Button onPress={() => this.props.navigation.navigate("Main")}>
+            Proceed!
+          </Button>
+        </View>
+      <View style={[styles.container, {justifyContent: "flex-end"}]}>
+          <Text>GrabWheels-Mood</Text>
+          <Text>Ver. 0.3.Beta</Text>
+        </View>
       </View>
     );
   }

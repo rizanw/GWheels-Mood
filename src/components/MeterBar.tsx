@@ -37,8 +37,8 @@ class MeterBar extends React.Component<Props, State> {
         </View>
         <View style={styles.meterBarIconContainer}>
           <Image style={[styles.meterBarIcon, {left: 0}]} source={require('../../assets/icons/tired.png')} />
-          <Image style={[styles.meterBarIcon, {marginHorizontal: Dimensions.get("window").width/3+10}]} source={require('../../assets/icons/tired.png')} />
-          <Image style={[styles.meterBarIcon, {left: 0}]} source={require('../../assets/icons/tired.png')} />
+          <Image style={[styles.meterBarIcon, {marginHorizontal: Dimensions.get("window").width/3+10}]} source={require('../../assets/icons/flat.png')} />
+          <Image style={[styles.meterBarIcon, {left: 0}]} source={require('../../assets/icons/smile.png')} />
         </View>
       </View>
     );
